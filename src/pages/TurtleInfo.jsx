@@ -1,12 +1,13 @@
-import { styled } from 'styled-components'
-import Continents from '/map/continents.svg';
-import LoggerHeadMap from '/map/distribution/loggerhead.svg'
-import GreenTurtle from '/map/distribution/greenTurtle.svg'
+import { styled } from 'styled-components';
 
-export default function Loggerhead() {
+export default function TurtleInfo({turtles}){
   return (
     <MapLayout>
-      <SpeciesDistributionLayout src={GreenTurtle} />
+      {turtles.map((turtle) =>{
+        return (
+          <SpeciesDistributionLayout src={turtle.distribution}/>
+        )
+      })}
     </MapLayout>
   )
 }
@@ -20,5 +21,6 @@ const MapLayout = styled.div`
 `;
 
 const SpeciesDistributionLayout = styled.img`
+  margin: 12.5% 0;
   width: 100%;
 `;

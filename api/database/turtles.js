@@ -1,0 +1,51 @@
+export const turtles = [
+  {
+    name: "loggerhead",
+    portugueseName: 'Tartaruga Comum',
+    scientificName: "Caretta caretta",
+    SVGIcon: '/turtles/loggerhead.svg',
+    distribution: '/map/distribution/loggerhead.svg',
+  },
+  {
+    name: "green turtle",
+    portugueseName: 'Tartaruga-verde',
+    scientificName: "Chelonia Mysdas",
+    SVGIcon: '/turtles/greenTurtle.svg',
+    distribution: '/map/distribution/greenTurtle.svg',
+  },
+  {
+    name: "leatherback",
+    portugueseName: "Tartaruga-de-couro",
+    scientificName: "Dermochelys coriacea",
+    SVGIcon: '/turtles/leatherback.svg',
+    distribution: '/map/distribution/leatherback.svg',
+  },
+  {
+    name: "hawksbill",
+    portugueseName: "Tartaruga-de-pente",
+    scientificName: "Eretmochelys imbricata",
+    SVGIcon: '/turtles/hawksbill.svg',
+    distribution: '/map/distribution/hawksbill.svg',
+  },
+  {
+    name: "kemp's Ridley",
+    portugueseName: "Tartaruga-de-kemp",
+    scientificName: "Lepidochelys kempii",
+    SVGIcon: "/turtles/kempsRidley.svg",
+    distribution: '/map/distribution//kempsRidley.svg',
+  },
+  {
+    name: "Olive Ridley",
+    portugueseName: "Tartaruga-oliva",
+    scientificName: "Lepidochelys olivacea",
+    SVGIcon: '/turtles/oliveRidley.svg',
+    distribution: '/map/distribution//oliveRidley.svg',
+  },
+  {
+    name: "flatback",
+    portugueseName: "Tartaruga-marinha-australiana",
+    scientificName: "Natator depressus",
+    SVGIcon: '/turtles/flatback.svg',
+    distribution: '/map/distribution/flatback.svg',
+  },
+];

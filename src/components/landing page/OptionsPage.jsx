@@ -1,7 +1,14 @@
 import { Link } from 'react-router-dom';
+import { scrollToTop } from 'react-scroll/modules/mixins/animate-scroll';
 import { styled } from 'styled-components';
 
 export default function OptionsPage(){
+
+  const handleClick = (e) =>{
+    e.preventDefault()
+    // scrollToTop('smooth');
+    console.log('babalba');
+  }
   return(
     <OptionsContainer>
       <Button to="/projetos">projetos</Button>

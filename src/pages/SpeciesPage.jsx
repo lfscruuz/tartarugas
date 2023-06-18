@@ -1,49 +1,15 @@
 import { styled } from 'styled-components'
-import Flatback from '/turtles/flatback.svg'
-import GreenTurtle from '/turtles/greenTurtle.svg'
-import Hawksbill from '/turtles/hawksbill.svg'
-import KempsRidley from "/turtles/kempsRidley.svg"
-import Leatherback from '/turtles/leatherback.svg'
-import Loggerhead from '/turtles/loggerhead.svg'
-import OliveRidley from '/turtles/oliveRidley.svg'
 import SlideShow from '../components/species page/SlideShow'
+import TurtleInfo from './TurtleInfo'
+import { turtles } from '../../api/database/turtles'
+import { useRef } from 'react'
 
 export default function Especies() {
-
-  const turtles = [
-    {
-      name: "flatback",
-      image: Flatback
-    },
-    {
-      name: "green turtle",
-      image: GreenTurtle
-    },
-    {
-      name: "hawksbill",
-      image: Hawksbill
-    },
-    {
-      name: "kemp's Ridley",
-      image: KempsRidley
-    },
-    {
-      name: "leatherback",
-      image: Leatherback
-    },
-    {
-      name: "loggerhead",
-      image: Loggerhead
-    },
-    {
-      name: "Olive Ridley",
-      image: OliveRidley
-    }
-  ];
-
+  
   return (
     <SpeciesPageContainer>
       <SlideShow turtles={turtles}/>
+      <TurtleInfo turtles={turtles} />
     </SpeciesPageContainer>
   )
 }

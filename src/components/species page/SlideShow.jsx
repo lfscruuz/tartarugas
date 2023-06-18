@@ -26,7 +26,6 @@ export default function SlideShow({ turtles }) {
     };
   }, [index]);
 
-
   return (
     <PageContent>
       <SlideShowContainer>
@@ -37,8 +36,8 @@ export default function SlideShow({ turtles }) {
             return (
               <Slide key={id}>
                 <SlideContent>
-                  <img src={turtle.image} alt={turtle.name} />
-                  <p>{turtle.name}</p>
+                  <img src={turtle.SVGIcon} alt={turtle.name} />
+                  <p>{turtle.portugueseName}</p>
                 </SlideContent>
               </Slide>
             )

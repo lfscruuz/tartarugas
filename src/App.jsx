@@ -12,7 +12,7 @@ export default function App() {
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/especies' element={<Especies />} />
-        <Route path='/especies/loggerhead' element={<Loggerhead />} />
+        <Route path='/loggerhead' element={<Loggerhead />} />
         <Route path='/projetos' element={<Projetos />} />
       </Routes>
     </BrowserRouter>
