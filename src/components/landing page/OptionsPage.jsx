@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 export default function OptionsPage(){
   return(
     <OptionsContainer>
-      <Button to="/">projetos</Button>
+      <Button to="/projetos">projetos</Button>
       <Button to="/especies">especies</Button>
     </OptionsContainer>
   );
