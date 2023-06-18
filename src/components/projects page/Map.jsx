@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import Continents from '/map/Continents.svg';
+import Continents from '/map/continents.svg';
 
 export default function Map() {
   return (
