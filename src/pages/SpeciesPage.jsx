@@ -2,14 +2,35 @@ import { styled } from 'styled-components'
 import SlideShow from '../components/species page/SlideShow'
 import TurtleInfo from './TurtleInfo'
 import { turtles } from '../../api/database/turtles'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function Especies() {
-  
+  const [selected, setSelected] = useState(null);
+  const [found, setFound] = useState(null);
+
+  let turtleRef = useRef(selected);
+  let infoRef = useRef(found);
+
+  useEffect(() => {
+    turtleRef.current = selected;
+    console.log(turtleRef.current);
+    console.log(selected);
+  }, [selected]);
+
+  useEffect(() =>{
+    infoRef.current = found;
+    found?.current?.scrollIntoView({behavior: "smooth"}); 
+  }, [found])
+
+
   return (
     <SpeciesPageContainer>
-      <SlideShow turtles={turtles}/>
-      <TurtleInfo turtles={turtles} />
+      <SlideShow turtles={turtles} setSelected={setSelected}/>
+      {turtles.map((turtle) => {  
+        return (
+          <TurtleInfo turtle={turtle} turtleRef={turtleRef} selected={selected} setFound={setFound}/>
+        )
+      })}
     </SpeciesPageContainer>
   )
 }

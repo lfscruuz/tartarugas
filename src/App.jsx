@@ -4,6 +4,8 @@ import Especies from './pages/SpeciesPage';
 import GlobalStyles from './GlobalStyles';
 import Projetos from './pages/ProjectsPage';
 import Loggerhead from './pages/Loggerhead';
+import ScrollToTop from './components/ScrollToTop';
+import TurtleInfo from './pages/TurtleInfo';
 
 export default function App() {
   return (
@@ -12,9 +14,11 @@ export default function App() {
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/especies' element={<Especies />} />
+        <Route path='/especies/:id' element={<TurtleInfo/>}/>
         <Route path='/loggerhead' element={<Loggerhead />} />
         <Route path='/projetos' element={<Projetos />} />
       </Routes>
+      <ScrollToTop />
     </BrowserRouter>
   )
 }

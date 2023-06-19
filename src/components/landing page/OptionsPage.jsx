@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { scrollToTop } from 'react-scroll/modules/mixins/animate-scroll';
 import { styled } from 'styled-components';
+import ScrollToTop from '../ScrollToTop';
 
 export default function OptionsPage(){
 
@@ -13,6 +14,7 @@ export default function OptionsPage(){
     <OptionsContainer>
       <Button to="/projetos">projetos</Button>
       <Button to="/especies">especies</Button>
+      <ScrollToTop/>
     </OptionsContainer>
   );
 }

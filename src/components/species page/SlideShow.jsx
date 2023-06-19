@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-export default function SlideShow({ turtles }) {
+export default function SlideShow({ turtles, setSelected }) {
   const [index, setIndex] = useState(0);
   const timeoutRef = useRef(null);
   const delay = 3500;
@@ -26,15 +27,16 @@ export default function SlideShow({ turtles }) {
     };
   }, [index]);
 
+  const handleClick = (e) =>{
+    setSelected(e.target);
+  }
   return (
     <PageContent>
       <SlideShowContainer>
-        <SlideShowSlider
-          style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
-        >
+        <SlideShowSlider style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}>
           {turtles.map((turtle, id) => {
             return (
-              <Slide key={id}>
+              <Slide key={id} onClick={handleClick}>
                 <SlideContent>
                   <img src={turtle.SVGIcon} alt={turtle.name} />
                   <p>{turtle.portugueseName}</p>

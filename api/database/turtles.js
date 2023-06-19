@@ -1,5 +1,6 @@
 export const turtles = [
   {
+    id:1,
     name: "loggerhead",
     portugueseName: 'Tartaruga Comum',
     scientificName: "Caretta caretta",
@@ -7,6 +8,7 @@ export const turtles = [
     distribution: '/map/distribution/loggerhead.svg',
   },
   {
+    id:2,
     name: "green turtle",
     portugueseName: 'Tartaruga-verde',
     scientificName: "Chelonia Mysdas",
@@ -14,6 +16,7 @@ export const turtles = [
     distribution: '/map/distribution/greenTurtle.svg',
   },
   {
+    id:3,
     name: "leatherback",
     portugueseName: "Tartaruga-de-couro",
     scientificName: "Dermochelys coriacea",
@@ -21,6 +24,7 @@ export const turtles = [
     distribution: '/map/distribution/leatherback.svg',
   },
   {
+    id:4,
     name: "hawksbill",
     portugueseName: "Tartaruga-de-pente",
     scientificName: "Eretmochelys imbricata",
@@ -28,6 +32,7 @@ export const turtles = [
     distribution: '/map/distribution/hawksbill.svg',
   },
   {
+    id:5,
     name: "kemp's Ridley",
     portugueseName: "Tartaruga-de-kemp",
     scientificName: "Lepidochelys kempii",
@@ -35,6 +40,7 @@ export const turtles = [
     distribution: '/map/distribution//kempsRidley.svg',
   },
   {
+    id:6,
     name: "Olive Ridley",
     portugueseName: "Tartaruga-oliva",
     scientificName: "Lepidochelys olivacea",
@@ -42,6 +48,7 @@ export const turtles = [
     distribution: '/map/distribution//oliveRidley.svg',
   },
   {
+    id:7,
     name: "flatback",
     portugueseName: "Tartaruga-marinha-australiana",
     scientificName: "Natator depressus",
