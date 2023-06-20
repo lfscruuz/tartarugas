@@ -97,6 +97,7 @@ const SlideShowSlider = styled.div`
 
 const Slide = styled.div`
 display: inline-block;
+cursor: pointer;
 
 height: 23rem;
 width: 100%;

@@ -1,6 +1,7 @@
-import { styled } from 'styled-components'
 import SlideShow from '../components/species page/SlideShow'
-import TurtleInfo from './TurtleInfo'
+import TurtleInfo from '../components/species page/TurtleInfo'
+import { AiOutlineArrowUp } from 'react-icons/ai'
+import { styled } from 'styled-components'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
@@ -15,15 +16,17 @@ export default function Especies() {
     })
   }, []);
 
-  useEffect(() =>{
-    if (selected !== null){
+  useEffect(() => {
+    if (selected !== null) {
       const newId = selected.replace("Card", "Element");
       let element = document.getElementById(newId);
-      element?.scrollIntoView({behavior: 'smooth'})
+      element?.scrollIntoView({ behavior: 'smooth' })
     }
   }, [selected])
 
-
+  const scrollToTop = () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
 
   return (
     <SpeciesPageContainer>
@@ -32,12 +35,15 @@ export default function Especies() {
         data === null ? <></> : data.map((turtle) => {
           return (
             <>
-              <TurtleInfo turtle={turtle}/>
+              <TurtleInfo turtle={turtle} />
             </>
           )
         })
 
       }
+      <BackToTop onClick={scrollToTop}>
+        <ArrowToTop />
+      </BackToTop>
     </SpeciesPageContainer>
   )
 }
@@ -54,4 +60,27 @@ const SpeciesPageContainer = styled.main`
   align-items: center;
 
   min-height: 100vh;
+`;
+
+const BackToTop = styled.button`
+  width: 5rem;
+  height: 5rem;
+  
+  position: fixed;
+  z-index: 1;
+  right: 5em;
+  bottom: 5em;
+  
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 10px 10px 20px -30px rgba(0, 0, 0, 0.215);
+  backdrop-filter: blur(2.6px);
+  -webkit-backdrop-filter: blur(2.6px);
+  border: 1px solid rgba(255, 255, 255, 0.27);
+  border-radius: 50%;
+
+  cursor: pointer;
+`;
+
+const ArrowToTop = styled(AiOutlineArrowUp)`
+  font-size: 2.5rem;
 `;
