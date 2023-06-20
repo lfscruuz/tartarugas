@@ -18,27 +18,31 @@ export default function Especies() {
 
   useEffect(() => {
     if (selected !== null) {
-      const newId = selected.replace("Card", "Element");
+      let newId = selected.replace("Card", "Element");
       let element = document.getElementById(newId);
       element?.scrollIntoView({ behavior: 'smooth' })
     }
   }, [selected])
 
   const scrollToTop = () => {
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   return (
     <SpeciesPageContainer>
       <SlideShow setSelected={setSelected} />
       {
-        data === null ? <></> : data.map((turtle) => {
-          return (
-            <>
-              <TurtleInfo turtle={turtle} />
-            </>
-          )
-        })
+        data === null ?
+          <>
+            <h1>Loading...</h1>
+          </>
+          : data.map((turtle) => {
+            return (
+              <>
+                <TurtleInfo turtle={turtle} />
+              </>
+            )
+          })
 
       }
       <BackToTop onClick={scrollToTop}>
@@ -72,7 +76,7 @@ const BackToTop = styled.button`
   bottom: 5em;
   
   background: rgba(255, 255, 255, 0.1);
-  box-shadow: 10px 10px 20px -30px rgba(0, 0, 0, 0.215);
+  box-shadow: 10px 10px 20px -30px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(2.6px);
   -webkit-backdrop-filter: blur(2.6px);
   border: 1px solid rgba(255, 255, 255, 0.27);

@@ -12,8 +12,8 @@ export default function OptionsPage(){
   }
   return(
     <OptionsContainer>
-      <Button to="/projetos">projetos</Button>
-      <Button to="/especies">especies</Button>
+      <Button to="/projetos">PROJETOS</Button>
+      <Button to="/especies">ESPÉCIES</Button>
       <ScrollToTop/>
     </OptionsContainer>
   );
