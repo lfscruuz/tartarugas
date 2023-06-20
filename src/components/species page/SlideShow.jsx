@@ -1,23 +1,36 @@
+import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
+import { turtles } from '../../../api/database/turtles';
 
-export default function SlideShow({ turtles, setSelected }) {
+export default function SlideShow({ setSelected }) {
   const [index, setIndex] = useState(0);
+  const [data, setData] = useState([]);
   const timeoutRef = useRef(null);
   const delay = 3500;
 
-  function resetTimeOut(){
-    if (timeoutRef.current){
+  useEffect(() => {
+
+    axios.get("http://localhost:5000/turtles").then((res) => {
+      setData(res.data);
+    })
+
+    console.log(data);
+  }, []);
+
+  function resetTimeOut() {
+    if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
   }
+
   useEffect(() => {
     resetTimeOut();
     timeoutRef.current = setTimeout(
       () =>
         setIndex((prevIndex) =>
-          prevIndex === turtles.length - 1 ? 0 : prevIndex + 1
+          prevIndex === data.length - 1 ? 0 : prevIndex + 1
         ),
       delay
     );
@@ -25,35 +38,43 @@ export default function SlideShow({ turtles, setSelected }) {
     return () => {
       resetTimeOut();
     };
+
   }, [index]);
 
-  const handleClick = (e) =>{
-    setSelected(e.target);
+  const handleClick = (turtle) => {
+    const cardId = ('Card ' + turtle.id);
+    setSelected(cardId);
   }
   return (
     <PageContent>
-      <SlideShowContainer>
-        <SlideShowSlider style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}>
-          {turtles.map((turtle, id) => {
-            return (
-              <Slide key={id} onClick={handleClick}>
-                <SlideContent>
-                  <img src={turtle.SVGIcon} alt={turtle.name} />
-                  <p>{turtle.portugueseName}</p>
-                </SlideContent>
-              </Slide>
-            )
-          })}
-        </SlideShowSlider>
-        <SlideShowDots>
-          {turtles.map((_, idx) => {
-            return (
-              idx === index ?
-              <SlideShowDotActive key={idx} onClick={() => setIndex(idx)} /> : <SlideShowDotInactive key={idx} onClick={() => setIndex(idx)}/>
-            )
-          })}
-        </SlideShowDots>
-      </SlideShowContainer>
+      {
+        data === []
+        ?
+          <></>
+        :
+          <SlideShowContainer>
+            <SlideShowSlider style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}>
+              {data.map((turtle) => {
+                return (
+                  <Slide key={turtle.id} onClick={() => handleClick(turtle)}>
+                    <SlideContent>
+                      <img src={turtle.svg_icon} alt={turtle.english_name} />
+                      <p>{turtle.portuguese_name}</p>
+                    </SlideContent>
+                  </Slide>
+                )
+              })}
+            </SlideShowSlider>
+            <SlideShowDots>
+              {data.map((_, idx) => {
+                return (
+                  idx === index ?
+                    <SlideShowDotActive key={idx} onClick={() => setIndex(idx)} /> : <SlideShowDotInactive key={idx} onClick={() => setIndex(idx)} />
+                )
+              })}
+            </SlideShowDots>
+          </SlideShowContainer>
+      }
     </PageContent>
   );
 }

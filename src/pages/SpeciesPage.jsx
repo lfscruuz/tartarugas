@@ -3,34 +3,46 @@ import SlideShow from '../components/species page/SlideShow'
 import TurtleInfo from './TurtleInfo'
 import { turtles } from '../../api/database/turtles'
 import { useEffect, useRef, useState } from 'react'
+import axios from 'axios'
 
 export default function Especies() {
   const [selected, setSelected] = useState(null);
   const [found, setFound] = useState(null);
-
-  let turtleRef = useRef(selected);
-  let infoRef = useRef(found);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
-    turtleRef.current = selected;
-    console.log(turtleRef.current);
-    console.log(selected);
-  }, [selected]);
+
+    axios.get("http://localhost:5000/turtles").then((res) => {
+      setData(res.data);
+    })
+
+    console.log(data);
+  }, []);
 
   useEffect(() =>{
-    infoRef.current = found;
-    found?.current?.scrollIntoView({behavior: "smooth"}); 
-  }, [found])
+    if (selected !== null){
+      const newId = selected.replace("Card", "Element");
+      const element = document.getElementById(newId);
+      console.log(selected, newId, element);
+      element?.scrollIntoView({behavior: 'smooth'})
+    }
+  }, [selected])
+
 
 
   return (
     <SpeciesPageContainer>
-      <SlideShow turtles={turtles} setSelected={setSelected}/>
-      {turtles.map((turtle) => {  
-        return (
-          <TurtleInfo turtle={turtle} turtleRef={turtleRef} selected={selected} setFound={setFound}/>
-        )
-      })}
+      <SlideShow setSelected={setSelected} />
+      {
+        data === null ? <></> : data.map((turtle) => {
+          return (
+            <>
+              <TurtleInfo turtle={turtle} id={`Element ${turtle.id}`}/>
+            </>
+          )
+        })
+
+      }
     </SpeciesPageContainer>
   )
 }

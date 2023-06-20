@@ -1,23 +1,13 @@
-import { useEffect } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-export default function TurtleInfo({ turtle, turtleRef, selected, setFound }) {
-
-  const params = useParams();
-
-  useEffect(() =>{
-    console.log(turtleRef.current, 'child');
-    setFound(turtleRef);
-  },[selected])
+export default function TurtleInfo({ turtle }) {
+  
   return (
     <MapLayout>
-      {
-        
-        turtleRef.current?.alt === turtle.name ?
-          <SpeciesDistributionLayout src={turtle.distribution} alt={turtle.name} ref={turtleRef} /> :
-          <SpeciesDistributionLayout src={turtle.distribution} alt={turtle.name} />
-      }
+      <SpeciesDistributionLayout src={turtle.distribution} alt={turtle.name} />
     </MapLayout>
   )
 }
