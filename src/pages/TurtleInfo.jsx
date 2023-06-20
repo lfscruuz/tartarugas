@@ -1,13 +1,10 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 export default function TurtleInfo({ turtle }) {
   
   return (
     <MapLayout>
-      <SpeciesDistributionLayout src={turtle.distribution} alt={turtle.name} />
+      <SpeciesDistributionLayout src={turtle.distribution} alt={turtle.name} id={`Element ${turtle.id}`} />
     </MapLayout>
   )
 }

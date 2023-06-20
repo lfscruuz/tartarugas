@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
-import { turtles } from '../../../api/database/turtles';
 
 export default function SlideShow({ setSelected }) {
   const [index, setIndex] = useState(0);
@@ -11,7 +9,6 @@ export default function SlideShow({ setSelected }) {
   const delay = 3500;
 
   useEffect(() => {
-
     axios.get("http://localhost:5000/turtles").then((res) => {
       setData(res.data);
     })
@@ -56,7 +53,7 @@ export default function SlideShow({ setSelected }) {
             <SlideShowSlider style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}>
               {data.map((turtle) => {
                 return (
-                  <Slide key={turtle.id} onClick={() => handleClick(turtle)}>
+                  <Slide key={turtle.id} id={`Card ${turtle.id}`}onClick={() => handleClick(turtle)}>
                     <SlideContent>
                       <img src={turtle.svg_icon} alt={turtle.english_name} />
                       <p>{turtle.portuguese_name}</p>

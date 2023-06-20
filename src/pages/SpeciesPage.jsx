@@ -1,13 +1,11 @@
 import { styled } from 'styled-components'
 import SlideShow from '../components/species page/SlideShow'
 import TurtleInfo from './TurtleInfo'
-import { turtles } from '../../api/database/turtles'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 export default function Especies() {
   const [selected, setSelected] = useState(null);
-  const [found, setFound] = useState(null);
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -15,15 +13,12 @@ export default function Especies() {
     axios.get("http://localhost:5000/turtles").then((res) => {
       setData(res.data);
     })
-
-    console.log(data);
   }, []);
 
   useEffect(() =>{
     if (selected !== null){
       const newId = selected.replace("Card", "Element");
-      const element = document.getElementById(newId);
-      console.log(selected, newId, element);
+      let element = document.getElementById(newId);
       element?.scrollIntoView({behavior: 'smooth'})
     }
   }, [selected])
@@ -37,7 +32,7 @@ export default function Especies() {
         data === null ? <></> : data.map((turtle) => {
           return (
             <>
-              <TurtleInfo turtle={turtle} id={`Element ${turtle.id}`}/>
+              <TurtleInfo turtle={turtle}/>
             </>
           )
         })
