@@ -4,17 +4,13 @@ import { AiOutlineArrowUp } from 'react-icons/ai'
 import { styled } from 'styled-components'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { turtles } from '../../api/database/turtles'
 
 export default function Especies() {
   const [selected, setSelected] = useState(null);
   const [data, setData] = useState(null);
 
-  useEffect(() => {
-
-    axios.get("http://localhost:5000/turtles").then((res) => {
-      setData(res.data);
-    })
-  }, []);
+  
 
   useEffect(() => {
     if (selected !== null) {
@@ -32,11 +28,11 @@ export default function Especies() {
     <SpeciesPageContainer>
       <SlideShow setSelected={setSelected} />
       {
-        data === null ?
+        turtles.length == 0 ?
           <>
             <h1>Loading...</h1>
           </>
-          : data.map((turtle) => {
+          : turtles.map((turtle) => {
             return (
               <>
                 <TurtleInfo turtle={turtle} />
@@ -76,6 +72,7 @@ const BackToTop = styled.button`
   bottom: 5em;
   
   background: rgba(255, 255, 255, 0.1);
+  filter: drop-shadow(10px 10px 20px -30px rgba(0, 0, 0, 0.5));
   box-shadow: 10px 10px 20px -30px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(2.6px);
   -webkit-backdrop-filter: blur(2.6px);

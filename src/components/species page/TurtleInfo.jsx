@@ -12,9 +12,12 @@ export default function TurtleInfo({ turtle }) {
         <SpeciesName>
           <h3>{turtle.portuguese_name}</h3>
           <p>{turtle.scientific_name}</p>
-          <SaibaMaisBtn>saiba mais</SaibaMaisBtn>
+          <p><strong>dieta:</strong> {turtle.diet}</p>
+          <p><strong>tamanho:</strong> {turtle.size}</p>
+          <p><strong>status:</strong> {turtle.status.portuguese_name}</p>
         </SpeciesName>
       </SpeciesInformation>
+      <ConservationStatus src={turtle.status.svg_icon}/>
     </MapLayout>
   )
 }
@@ -43,7 +46,7 @@ const SpeciesInformation = styled.div`
   left: 10rem;
   bottom:20rem;
 
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.4);
   box-shadow: 0 30px 15px -30px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(2.6px);
   -webkit-backdrop-filter: blur(2.6px);
@@ -61,7 +64,7 @@ const SpeciesName = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: 7.5rem;
+  height: 10rem;
   width: 15rem;
   
   position: relative;
@@ -70,26 +73,28 @@ const SpeciesName = styled.div`
   /* font-size: 16px; */
 
   >h3{
-    margin: 0;
+    margin: 0 0 0 2px;
+  }
+  >p{
+    margin-top: 4px;
   }
 `;
 
-const SaibaMaisBtn = styled.a`
-  width: 7.5rem;
-  height: 2.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+const ConservationStatus = styled.img`
+  width: 112px;
+  height: 112px;
+  padding: 0;
+  
   position: absolute;
-  right: 0;
-  bottom: 0;
-
-  background: rgba(61, 61, 61, 0.1);
+  right: 15em;
+  top: 15em;
+  
+  background: rgba(100, 100, 100, 0.4);
+  box-shadow: 10px 10px 20px -30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2.6px);
+  -webkit-backdrop-filter: blur(2.6px);
   border: 1px solid rgba(255, 255, 255, 0.27);
-  cursor: pointer;
+  border-radius: 50%;
 
-  :active{
-    background: rgba(195, 195, 195, 0.1);
-  }
+  object-fit: cover;
 `;

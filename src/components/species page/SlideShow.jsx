@@ -1,20 +1,13 @@
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import { styled } from 'styled-components';
+import { turtles } from '../../../api/database/turtles';
 
 export default function SlideShow({ setSelected }) {
   const [index, setIndex] = useState(0);
   const [data, setData] = useState([]);
   const timeoutRef = useRef(null);
   const delay = 3500;
-
-  useEffect(() => {
-    axios.get("http://localhost:5000/turtles").then((res) => {
-      setData(res.data);
-    })
-
-    console.log(data);
-  }, []);
 
   function resetTimeOut() {
     if (timeoutRef.current) {
@@ -27,7 +20,7 @@ export default function SlideShow({ setSelected }) {
     timeoutRef.current = setTimeout(
       () =>
         setIndex((prevIndex) =>
-          prevIndex === data.length - 1 ? 0 : prevIndex + 1
+          prevIndex === turtles.length - 1 ? 0 : prevIndex + 1
         ),
       delay
     );
@@ -45,13 +38,13 @@ export default function SlideShow({ setSelected }) {
   return (
     <PageContent>
       {
-        data === []
+        turtles.length === 0
         ?
           <></>
         :
           <SlideShowContainer>
             <SlideShowSlider style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}>
-              {data.map((turtle) => {
+              {turtles.map((turtle) => {
                 return (
                   <Slide key={turtle.id} id={`Card ${turtle.id}`}onClick={() => handleClick(turtle)}>
                     <SlideContent>
@@ -63,7 +56,7 @@ export default function SlideShow({ setSelected }) {
               })}
             </SlideShowSlider>
             <SlideShowDots>
-              {data.map((_, idx) => {
+              {turtles.map((_, idx) => {
                 return (
                   idx === index ?
                     <SlideShowDotActive key={idx} onClick={() => setIndex(idx)} /> : <SlideShowDotInactive key={idx} onClick={() => setIndex(idx)} />

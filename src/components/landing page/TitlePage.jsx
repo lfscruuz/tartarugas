@@ -24,6 +24,7 @@ const TitleContainer = styled.div`
   justify-content: center;
 
   height: 100vh;
+  position: relative;
 
   background-color: skyblue;
 `;

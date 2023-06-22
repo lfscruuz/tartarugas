@@ -1,6 +1,7 @@
 import { styled } from 'styled-components'
 import TitlePage from '../components/landing page/TitlePage';
 import OptionsPage from '../components/landing page/OptionsPage';
+import MoreInfo from '../components/landing page/MoreInfo';
 
 export default function LandingPage() {
   return (
