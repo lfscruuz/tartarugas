@@ -15,7 +15,12 @@ export default function Sidebar() {
     setVisibleSidebar(false);
   }
 
+  function scrollToTop(){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   function handleClickLogo() {
+    scrollToTop();
     navigate("/");
   }
 
@@ -33,7 +38,7 @@ export default function Sidebar() {
       <LogoOption>
         <img src="/turtles/turtle-icon.svg" alt="turtle-icon" onClick={handleClickLogo} />
       </LogoOption>
-      <LinkOption to='/especies'>
+      <LinkOption to='/especies' onClick={scrollToTop}>
         <p>Espécies</p>
       </LinkOption>
       <LinkOption onClick={handleClickInfo}>

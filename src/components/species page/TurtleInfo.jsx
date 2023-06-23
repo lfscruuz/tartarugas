@@ -11,7 +11,7 @@ export default function TurtleInfo({ turtle }) {
         <SpeciesPicture src={turtle.image} />
         <SpeciesName>
           <h3>{turtle.portuguese_name}</h3>
-          <p>{turtle.scientific_name}</p>
+          <h4>{turtle.scientific_name}</h4>
           <p><strong>dieta:</strong> {turtle.diet}</p>
           <p><strong>tamanho:</strong> {turtle.size}</p>
           <p><strong>status:</strong> {turtle.status.portuguese_name}</p>
@@ -63,8 +63,7 @@ const SpeciesPicture = styled.img`
 const SpeciesName = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  height: 10rem;
+  height: 12rem;
   width: 15rem;
   
   position: relative;
@@ -75,8 +74,12 @@ const SpeciesName = styled.div`
   >h3{
     margin: 0 0 0 2px;
   }
-  >p{
+  >h4{
     margin-top: 4px;
+    font-weight: 400;
+  }
+  >p{
+    margin-top: 1px;
   }
 `;
 
